@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* ─── LIGHT MODE ─────────────────────────────────── */
+:root {
+  /* Blue / white luminous theme */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.224 0.051 264);
+
+  --primary: oklch(0.538 0.222 264.4);       /* #2563EB bright blue  */
+  --primary-foreground: oklch(1 0 0);
+
+  --accent: oklch(0.491 0.263 293.6);        /* #7C3AED violet       */
+  --accent-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.96 0.013 243);
+  --muted-foreground: oklch(0.43 0.038 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.224 0.051 264);
+
+  --secondary: oklch(0.96 0.013 243);
+  --secondary-foreground: oklch(0.224 0.051 264);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.224 0.051 264);
+
+  --border: oklch(0.913 0.018 250);
+  --input: oklch(0.913 0.018 250);
+  --ring: oklch(0.538 0.222 264.4);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --radius: 0.625rem;
+
+  /* Sidebar tokens (unused but required by shadcn) */
+  --sidebar: oklch(0.985 0.005 243);
+  --sidebar-foreground: oklch(0.224 0.051 264);
+  --sidebar-primary: oklch(0.538 0.222 264.4);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.96 0.013 243);
+  --sidebar-accent-foreground: oklch(0.224 0.051 264);
+  --sidebar-border: oklch(0.913 0.018 250);
+  --sidebar-ring: oklch(0.538 0.222 264.4);
+}
+
+/* ─── DARK MODE (deep purple) ────────────────────── */
+.dark {
+  --background: oklch(0.098 0.044 293);      /* hsl(260 45% 6%)      */
+  --foreground: oklch(0.955 0.012 304);      /* hsl(270 20% 95%)     */
+
+  --primary: oklch(0.627 0.267 303.7);       /* #A855F7 vivid purple */
+  --primary-foreground: oklch(0.98 0.005 304);
+
+  --accent: oklch(0.655 0.286 313);          /* magenta-purple        */
+  --accent-foreground: oklch(0.98 0.005 304);
+
+  --muted: oklch(0.168 0.033 297);
+  --muted-foreground: oklch(0.72 0.018 304);
+
+  --card: oklch(0.13 0.038 297);
+  --card-foreground: oklch(0.955 0.012 304);
+
+  --secondary: oklch(0.168 0.033 297);
+  --secondary-foreground: oklch(0.955 0.012 304);
+
+  --popover: oklch(0.13 0.038 297);
+  --popover-foreground: oklch(0.955 0.012 304);
+
+  --border: oklch(0.208 0.034 297);
+  --input: oklch(0.208 0.034 297);
+  --ring: oklch(0.627 0.267 303.7);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --sidebar: oklch(0.13 0.038 297);
+  --sidebar-foreground: oklch(0.955 0.012 304);
+  --sidebar-primary: oklch(0.627 0.267 303.7);
+  --sidebar-primary-foreground: oklch(0.98 0.005 304);
+  --sidebar-accent: oklch(0.168 0.033 297);
+  --sidebar-accent-foreground: oklch(0.955 0.012 304);
+  --sidebar-border: oklch(0.208 0.034 297);
+  --sidebar-ring: oklch(0.627 0.267 303.7);
+}
+
+/* ─── BASE LAYER ─────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ─── UTILITIES ──────────────────────────────────── */
+@layer utilities {
+  /* Gradient text: primary→accent (blue→violet / purple→magenta) */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Radiating glow pulse behind CTA elements */
+  .glow-primary {
+    box-shadow: 0 0 80px color-mix(in oklch, var(--color-primary) 25%, transparent),
+                0 0 40px color-mix(in oklch, var(--color-accent) 15%, transparent);
+  }
+
+  /* Subtle card border glow */
+  .card-glow {
+    box-shadow: 0 0 0 1px color-mix(in oklch, var(--color-primary) 20%, transparent),
+                0 4px 32px color-mix(in oklch, var(--color-primary) 8%, transparent);
+  }
+
+  /* Chip / pill badge */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-muted
+           px-3 py-1 text-xs font-medium text-muted-foreground;
+  }
+}

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /impressum
+Disallow: /datenschutz
+
+# AI crawlers — explicitly allowed for GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+# TODO: update sitemap URL with real domain
+Sitemap: https://io-projects.com/sitemap.xml
