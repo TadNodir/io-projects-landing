@@ -8,7 +8,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { Layers, Smartphone, Search, TrendingDown, Award } from "lucide-react";
-import { problem } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 import {
   Visual1Outdated,
   Visual2Mobile,
@@ -21,7 +21,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const ICON_MAP = { Layers, Smartphone, Search, TrendingDown, Award } as const;
 
-const TOTAL_SLIDES = 1 + problem.cards.length;
+// intro slide + 5 problem cards (card count is identical across locales)
+const TOTAL_SLIDES = 6;
 const SECTION_HEIGHT = `${TOTAL_SLIDES * 100}vh`;
 const PAD_NUMS = ["01", "02", "03", "04", "05"];
 
@@ -54,6 +55,8 @@ function KineticTitle({ text, className }: { text: string; className?: string })
 }
 
 export function ProblemSection() {
+  const t = useTranslations();
+  const problem = t.problem;
   const containerRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
 
@@ -77,7 +80,7 @@ export function ProblemSection() {
       ref={containerRef}
       style={{ height: SECTION_HEIGHT }}
       className="relative"
-      aria-label="The problem"
+      aria-label={t.ui.problemAria}
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden bg-background flex flex-col items-center justify-center">
 
@@ -135,7 +138,7 @@ export function ProblemSection() {
                   transition={{ duration: 0.4 }}
                   className="text-xs font-semibold uppercase tracking-widest text-primary mb-6"
                 >
-                  The reality
+                  {t.ui.problemReality}
                 </motion.p>
                 <h2
                   className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] tracking-tight"
@@ -229,7 +232,7 @@ export function ProblemSection() {
           className="absolute bottom-8 right-6 sm:right-10 flex flex-col items-center gap-1.5 pointer-events-none"
           aria-hidden="true"
         >
-          <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">scroll</span>
+          <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">{t.ui.scroll}</span>
           <motion.div
             animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}

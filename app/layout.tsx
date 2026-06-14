@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { meta, SITE_URL } from "@/content/landing";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import { enDict, SITE_URL } from "@/content/landing";
+
+const meta = {
+  title: enDict.meta.title,
+  description: enDict.meta.description,
+  ogImage: `${SITE_URL}/og-image.jpg`,
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -122,7 +129,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

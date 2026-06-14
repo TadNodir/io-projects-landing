@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { footer } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 
 export function Footer() {
+  const t = useTranslations();
+  const footer = t.footer;
+  const year = new Date().getFullYear();
+
   return (
     <footer className="border-t border-border bg-background px-4 sm:px-6 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl">
@@ -26,7 +32,7 @@ export function Footer() {
           {/* About — GEO entity description */}
           <div className="col-span-full md:col-span-2">
             <h2 className="text-sm font-semibold text-foreground mb-3">
-              About IO Projects
+              {footer.aboutHeading}
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {footer.about}
@@ -36,7 +42,9 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border pt-8">
-          <p className="text-xs text-muted-foreground">{footer.copyright}</p>
+          <p className="text-xs text-muted-foreground">
+            © {year} IO Projects. {t.ui.footerRights}
+          </p>
           <nav aria-label="Footer navigation">
             <ul className="flex gap-6">
               {footer.links.map((link) => (

@@ -8,13 +8,13 @@ import { PricingSection } from "@/components/sections/PricingSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 import { Footer } from "@/components/Footer";
-import { faq } from "@/content/landing";
+import { enDict } from "@/content/landing";
 
 export default function Home() {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faq.items.map((item) => ({
+    mainEntity: enDict.faq.items.map((item) => ({
       "@type": "Question",
       name: item.q,
       acceptedAnswer: {

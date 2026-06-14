@@ -5,7 +5,8 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { HeroVideo } from "@/components/HeroVideo";
-import { hero, CALENDLY_URL } from "@/content/landing";
+import { CALENDLY_URL } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 
 function HeadlineWord({ word, index }: { word: string; index: number }) {
   const isAccent = word.startsWith("[[") && word.endsWith("]].");
@@ -33,6 +34,8 @@ const fadeUp = {
 };
 
 export function HeroSection() {
+  const t = useTranslations();
+  const hero = t.hero;
   const [emerged, setEmerged] = useState(false);
   const reduce = useReducedMotion();
 
@@ -40,11 +43,9 @@ export function HeroSection() {
   const show = emerged || !!reduce;
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col" aria-label="Hero">
+    <section className="relative min-h-[100svh] flex flex-col" aria-label={t.ui.heroAria}>
       {/* Video background — aria-hidden, decorative */}
-      <p className="sr-only">
-        A luminous blue orb radiates light against a dreamy blue gradient sky.
-      </p>
+      <p className="sr-only">{t.ui.heroOrbAlt}</p>
       <HeroVideo onEmerged={() => setEmerged(true)} />
 
       {/* Text layer — top portion of the hero */}
@@ -106,7 +107,7 @@ export function HeroSection() {
             custom={3}
             variants={fadeUp}
             className="flex flex-col gap-2 mb-6"
-            aria-label="Trust signals"
+            aria-label={t.ui.heroTrustAria}
           >
             {hero.trust.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-foreground/70">

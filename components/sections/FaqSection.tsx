@@ -7,9 +7,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faq, geoQA } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 
 export function FaqSection() {
+  const t = useTranslations();
+  const faq = t.faq;
+  const geoQA = t.geoQA;
   return (
     <section id="faq" className="py-24 sm:py-32 px-4 sm:px-6 bg-muted/30" aria-labelledby="faq-heading">
       <div className="mx-auto max-w-3xl">
@@ -50,11 +53,11 @@ export function FaqSection() {
 
         {/* GEO hidden Q&A — AI parsers read this, users see a subtle section */}
         <section
-          aria-label="Additional questions"
+          aria-label={t.ui.faqAdditionalAria}
           className="mt-16 pt-10 border-t border-border"
         >
           <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
-            More answers
+            {t.ui.faqMoreAnswers}
           </h3>
           <dl className="flex flex-col gap-6">
             {geoQA.map((qa) => (

@@ -8,15 +8,17 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import { imagine } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-// Slides: headline (0) + 4 outcomes (1-4)
-const TOTAL_SLIDES = 1 + imagine.outcomes.length; // 5
+// Slides: headline (0) + 4 outcomes (1-4) — outcome count is the same per locale
+const TOTAL_SLIDES = 5;
 const SECTION_HEIGHT = `${TOTAL_SLIDES * 100}vh`;
 
 export function ImagineSection() {
+  const t = useTranslations();
+  const imagine = t.imagine;
   const containerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
 

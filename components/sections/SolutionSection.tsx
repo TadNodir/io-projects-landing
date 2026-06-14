@@ -7,7 +7,7 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import { solution } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 import {
   Visual1Premium,
   Visual2ZeroRisk,
@@ -17,7 +17,8 @@ import {
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const TOTAL_SLIDES = 1 + solution.pillars.length;
+// headline slide + 4 pillars (pillar count is identical across locales)
+const TOTAL_SLIDES = 5;
 const SECTION_HEIGHT = `${TOTAL_SLIDES * 100}vh`;
 
 const VISUALS = [Visual1Premium, Visual2ZeroRisk, Visual3LiveInDays, Visual4NoEffort];
@@ -44,6 +45,8 @@ function KineticTitle({ text, className }: { text: string; className?: string })
 }
 
 export function SolutionSection() {
+  const t = useTranslations();
+  const solution = t.solution;
   const containerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
 
@@ -131,7 +134,7 @@ export function SolutionSection() {
                   transition={{ delay: 0.4, duration: 0.4 }}
                   className="mt-4 text-muted-foreground text-base"
                 >
-                  Four reasons your clients will trust you on sight.
+                  {t.ui.solutionSubhead}
                 </motion.p>
               </motion.div>
             ) : (

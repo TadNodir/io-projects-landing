@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { finalCta, CALENDLY_URL } from "@/content/landing";
+import { CALENDLY_URL } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 
 export function FinalCtaSection() {
+  const t = useTranslations();
+  const finalCta = t.finalCta;
   const reduce = useReducedMotion();
 
   return (

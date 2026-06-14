@@ -4,9 +4,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronDown, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { pricing, CALENDLY_URL } from "@/content/landing";
+import { CALENDLY_URL } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
+import type { Plan } from "@/content/i18n/types";
 
 export function PricingSection() {
+  const t = useTranslations();
+  const pricing = t.pricing;
   return (
     <section id="pricing" className="py-24 sm:py-32 px-4 sm:px-6 bg-background" aria-labelledby="pricing-heading">
       <div className="mx-auto max-w-6xl">
@@ -71,9 +75,10 @@ function PricingCard({
   plan,
   index,
 }: {
-  plan: (typeof pricing.plans)[0];
+  plan: Plan;
   index: number;
 }) {
+  const t = useTranslations();
   const [open, setOpen] = useState(false);
 
   return (
@@ -126,7 +131,7 @@ function PricingCard({
               : "bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
           }`}
         >
-          Get started
+          {t.ui.pricingGetStarted}
         </Link>
 
         {/* Expandable features */}
@@ -136,7 +141,7 @@ function PricingCard({
           aria-controls={`features-${plan.name}`}
           className="flex w-full items-center justify-between text-sm font-medium text-foreground/70 hover:text-foreground transition-colors py-2 border-t border-border"
         >
-          <span>What's included</span>
+          <span>{t.ui.pricingWhatsIncluded}</span>
           <motion.span
             animate={{ rotate: open ? 180 : 0 }}
             transition={{ duration: 0.2 }}

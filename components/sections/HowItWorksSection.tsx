@@ -7,13 +7,13 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import { howItWorks } from "@/content/landing";
+import { useTranslations } from "@/components/providers/LanguageProvider";
 import { VisualPreview, VisualBuild, VisualLaunch } from "./visuals/HowItWorksVisuals";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const SLIDES = [{ type: "headline" as const }, ...howItWorks.steps.map((s) => ({ type: "step" as const, step: s }))];
-const TOTAL_SLIDES = SLIDES.length;
+// headline slide + 3 steps (step count is identical across locales)
+const TOTAL_SLIDES = 4;
 const SECTION_HEIGHT = `${TOTAL_SLIDES * 100}vh`;
 
 const VISUALS = [VisualPreview, VisualBuild, VisualLaunch];
@@ -40,6 +40,8 @@ function KineticTitle({ text, className }: { text: string; className?: string })
 }
 
 export function HowItWorksSection() {
+  const t = useTranslations();
+  const howItWorks = t.howItWorks;
   const containerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
 
@@ -62,7 +64,7 @@ export function HowItWorksSection() {
       ref={containerRef}
       style={{ height: SECTION_HEIGHT }}
       className="relative"
-      aria-label="How it works"
+      aria-label={howItWorks.eyebrow}
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden bg-muted/40 flex flex-col items-center justify-center">
 
@@ -140,7 +142,7 @@ export function HowItWorksSection() {
                   transition={{ delay: 0.4, duration: 0.4 }}
                   className="mt-4 text-base text-muted-foreground"
                 >
-                  No tech knowledge needed. Ever.
+                  {t.ui.howItWorksSubhead}
                 </motion.p>
               </motion.div>
             ) : (
@@ -164,7 +166,9 @@ export function HowItWorksSection() {
                       {howItWorks.steps[stepIndex].number}
                     </span>
                     <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      Step {howItWorks.steps[stepIndex].number} of {howItWorks.steps.length}
+                      {t.ui.stepOf
+                        .replace("{n}", howItWorks.steps[stepIndex].number)
+                        .replace("{total}", String(howItWorks.steps.length))}
                     </span>
                   </motion.div>
 
@@ -201,7 +205,7 @@ export function HowItWorksSection() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2"
           aria-hidden="true"
         >
-          {SLIDES.map((_, i) => (
+          {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
             <motion.div
               key={i}
               animate={{ width: i === current ? 24 : 6, opacity: i === current ? 1 : 0.25 }}
