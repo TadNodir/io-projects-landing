@@ -41,7 +41,7 @@ export function ImagineSection() {
       className="relative"
       aria-labelledby="imagine-heading"
     >
-      <div className="sticky top-0 h-[100svh] overflow-hidden flex flex-col items-center justify-center">
+      <div className="sticky top-0 h-[100svh] overflow-hidden flex flex-col items-center justify-center select-none [touch-action:pan-y]">
 
         {/* Full-bleed gradient background — shifts as you progress */}
         <motion.div
@@ -117,7 +117,7 @@ export function ImagineSection() {
 
         {/* Progress dots */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none"
           aria-hidden="true"
         >
           {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (

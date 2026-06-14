@@ -7,7 +7,7 @@ export const dictionaries = { en, de, ru } as const;
 
 export type Locale = keyof typeof dictionaries;
 
-export const DEFAULT_LOCALE: Locale = "en";
+export const DEFAULT_LOCALE: Locale = "de";
 
 /** Ordered list used to render the language dropdown. */
 export const LOCALES: { code: Locale; label: string; short: string }[] = [

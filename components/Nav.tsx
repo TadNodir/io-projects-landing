@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -32,7 +32,7 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={t.ui.navHomeAria}>
+          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={t.ui.navHomeAria} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <Image
               src="/io-logo-white.png"
               alt="IO Projects"
@@ -78,41 +78,44 @@ export function Nav() {
         </div>
       </header>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          className="fixed inset-0 z-40 flex flex-col bg-background pt-20 px-6"
-        >
-          <nav aria-label={t.ui.navMobileAria}>
-            <ul className="flex flex-col gap-6 text-lg font-medium">
-              <li>
-                <a href="#pricing" onClick={() => setMobileOpen(false)} className="block py-2 text-foreground/80 hover:text-foreground transition-colors">
-                  {t.ui.navPricing}
-                </a>
-              </li>
-              <li>
-                <a href="#faq" onClick={() => setMobileOpen(false)} className="block py-2 text-foreground/80 hover:text-foreground transition-colors">
-                  {t.ui.navFaq}
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div className="mt-8">
-            <Link
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="block w-full rounded-xl bg-primary px-6 py-4 text-center text-base font-semibold text-primary-foreground"
-            >
-              {t.ui.navCta}
-            </Link>
-          </div>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 flex flex-col bg-background pt-20 px-6"
+          >
+            <nav aria-label={t.ui.navMobileAria}>
+              <ul className="flex flex-col gap-6 text-lg font-medium">
+                <li>
+                  <a href="#pricing" onClick={() => setMobileOpen(false)} className="block py-2 text-foreground/80 hover:text-foreground transition-colors">
+                    {t.ui.navPricing}
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq" onClick={() => setMobileOpen(false)} className="block py-2 text-foreground/80 hover:text-foreground transition-colors">
+                    {t.ui.navFaq}
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div className="mt-8">
+              <Link
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full rounded-xl bg-primary px-6 py-4 text-center text-base font-semibold text-primary-foreground"
+              >
+                {t.ui.navCta}
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

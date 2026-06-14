@@ -35,12 +35,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (isLocale(stored)) {
       setLocaleState(stored);
-      return;
-    }
-    // Fall back to the browser language on first visit (de-* / ru-* only).
-    const browser = navigator.language.slice(0, 2).toLowerCase();
-    if (isLocale(browser) && browser !== DEFAULT_LOCALE) {
-      setLocaleState(browser);
     }
   }, []);
 

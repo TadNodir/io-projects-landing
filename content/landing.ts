@@ -7,7 +7,7 @@
    JSON-LD) use the English dictionary re-exported below.
    ──────────────────────────────────────────────────────────────── */
 
-import { en } from "./i18n/en";
+import { de } from "./i18n/de";
 
 // TODO: replace with your real Calendly link before launch
 export const CALENDLY_URL = "https://calendly.com/io-projects";
@@ -15,5 +15,5 @@ export const CALENDLY_URL = "https://calendly.com/io-projects";
 // TODO: replace with your real domain before launch
 export const SITE_URL = "https://io-projects.com";
 
-/** Default (English) dictionary for server components & structured data. */
-export const enDict = en;
+/** Default (German) dictionary for server components & structured data. */
+export const enDict = de;

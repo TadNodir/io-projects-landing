@@ -71,7 +71,7 @@ export function SolutionSection() {
       className="relative"
       aria-labelledby="solution-heading"
     >
-      <div className="sticky top-0 h-[100svh] overflow-hidden bg-background flex flex-col items-center justify-center">
+      <div className="sticky top-0 h-[100svh] overflow-hidden bg-background flex flex-col items-center justify-center select-none [touch-action:pan-y]">
 
         {/* Orb accent */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -177,8 +177,8 @@ export function SolutionSection() {
 
                 {/* Visual — shown on all screens */}
                 <div className="flex items-center justify-center w-full overflow-hidden
-                                h-[280px] sm:h-[330px] lg:h-auto lg:min-h-[320px]">
-                  <div className="scale-[0.70] sm:scale-[0.86] lg:scale-100 origin-center">
+                                h-[220px] sm:h-[330px] lg:h-auto lg:min-h-[320px]">
+                  <div className="scale-[0.58] sm:scale-[0.86] lg:scale-100 origin-center">
                     {Visual && <Visual />}
                   </div>
                 </div>
@@ -208,7 +208,7 @@ export function SolutionSection() {
 
         {/* Progress dots */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none"
           aria-hidden="true"
         >
           {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (

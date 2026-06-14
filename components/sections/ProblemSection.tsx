@@ -82,7 +82,7 @@ export function ProblemSection() {
       className="relative"
       aria-label={t.ui.problemAria}
     >
-      <div className="sticky top-0 h-[100svh] overflow-hidden bg-background flex flex-col items-center justify-center">
+      <div className="sticky top-0 h-[100svh] overflow-hidden bg-background flex flex-col items-center justify-center select-none [touch-action:pan-y]">
 
         {/* Ambient orb */}
         <div className="absolute pointer-events-none inset-0 overflow-hidden" aria-hidden="true">
@@ -200,8 +200,8 @@ export function ProblemSection() {
 
                 {/* Visual — shown on all screens, scaled to fit on mobile */}
                 <div className="flex items-center justify-center w-full overflow-hidden
-                                h-[280px] sm:h-[330px] lg:h-auto lg:min-h-[320px]">
-                  <div className="scale-[0.70] sm:scale-[0.86] lg:scale-100 origin-center">
+                                h-[220px] sm:h-[330px] lg:h-auto lg:min-h-[320px]">
+                  <div className="scale-[0.58] sm:scale-[0.86] lg:scale-100 origin-center">
                     {Visual && <Visual />}
                   </div>
                 </div>
@@ -212,7 +212,7 @@ export function ProblemSection() {
 
         {/* Progress dots */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-none"
           aria-hidden="true"
         >
           {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
