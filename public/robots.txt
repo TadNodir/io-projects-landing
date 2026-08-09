@@ -19,5 +19,4 @@ Allow: /
 User-agent: Anthropic-AI
 Allow: /
 
-# TODO: update sitemap URL with real domain
-Sitemap: https://io-projects.com/sitemap.xml
+Sitemap: https://proposal.ioprojects.ai/sitemap.xml

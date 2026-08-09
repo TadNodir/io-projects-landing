@@ -1,7 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  // TODO: update with real domain before launch
-  siteUrl: process.env.SITE_URL || "https://io-projects.com",
+  siteUrl: process.env.SITE_URL || "https://proposal.ioprojects.ai",
   generateRobotsTxt: false, // we manage robots.txt manually
   exclude: ["/impressum", "/datenschutz"],
   changefreq: "monthly",

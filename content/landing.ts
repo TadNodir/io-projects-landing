@@ -12,8 +12,7 @@ import { de } from "./i18n/de";
 // TODO: replace with your real Calendly link before launch
 export const CALENDLY_URL = "https://calendly.com/io-projects";
 
-// TODO: replace with your real domain before launch
-export const SITE_URL = "https://io-projects.com";
+export const SITE_URL = "https://proposal.ioprojects.ai";
 
 /** Default (German) dictionary for server components & structured data. */
 export const enDict = de;

@@ -8,7 +8,7 @@ import { enDict, SITE_URL } from "@/content/landing";
 const meta = {
   title: enDict.meta.title,
   description: enDict.meta.description,
-  ogImage: `${SITE_URL}/og-image.jpg`,
+  ogImage: "/io-logo-white.png",
 };
 
 const geistSans = Geist({
@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   alternates: {
-    canonical: "/",
+    canonical: SITE_URL,
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "de_DE",
     url: SITE_URL,
     title: meta.title,
     description: meta.description,
@@ -78,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="de"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
@@ -92,7 +92,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "IO Projects",
               url: SITE_URL,
-              logo: `${SITE_URL}/io-logo-white.jpg`,
+              logo: `${SITE_URL}/io-logo-white.png`,
               sameAs: [],
             }),
           }}
