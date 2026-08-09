@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { enDict, SITE_URL } from "@/content/landing";
+import { GoogleAnalyticsGate } from "@/components/GoogleAnalyticsGate";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const meta = {
   title: enDict.meta.title,
@@ -132,7 +134,9 @@ export default function RootLayout({
         >
           <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
+        <CookieConsent />
       </body>
+      <GoogleAnalyticsGate />
     </html>
   );
 }

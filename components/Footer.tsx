@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "@/components/providers/LanguageProvider";
+import { reopenConsentBanner } from "@/lib/useConsent";
 
 export function Footer() {
   const t = useTranslations();
@@ -57,6 +58,15 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={reopenConsentBanner}
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Cookie-Einstellungen
+                </button>
+              </li>
             </ul>
           </nav>
         </div>

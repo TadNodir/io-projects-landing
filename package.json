@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
+    "@next/third-parties": "^16.3.0",
     "@remotion/player": "^4.0.474",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

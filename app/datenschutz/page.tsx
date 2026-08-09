@@ -109,12 +109,47 @@ export default function DatenschutzPage() {
             Cookies
           </h2>
           <p>
-            Derzeit werden keine Cookies zu Tracking- oder Analysezwecken
-            eingesetzt.
+            Cookies zu Analysezwecken (Google Analytics) werden ausschließlich
+            nach Ihrer ausdrücklichen Einwilligung über das Cookie-Banner
+            gesetzt — siehe Abschnitt „Google Analytics“ unten.
           </p>
           <p className="mt-2">
             Technisch notwendige Cookies können durch den Hostinganbieter
             gesetzt werden.
+          </p>
+        </section>
+
+        {/* TODO: have this section reviewed by a German lawyer — do not
+            treat this as final legal text. */}
+        <section>
+          <h2 className="text-base font-semibold text-foreground mb-2">
+            Google Analytics
+          </h2>
+          <p>
+            Mit Ihrer Einwilligung setzen wir Google Analytics ein, einen
+            Webanalysedienst der Google Ireland Limited, Gordon House, Barrow
+            Street, Dublin 4, Irland („Google“).
+          </p>
+          <p className="mt-2">
+            Google Analytics verwendet Cookies und ähnliche Technologien, um
+            Ihre Nutzung dieser Website zu analysieren, z. B. besuchte
+            Seiten, Verweildauer und Herkunft der Zugriffe.
+          </p>
+          <p className="mt-2">
+            Ihre IP-Adresse wird vor der Speicherung innerhalb der EU/des EWR
+            gekürzt (IP-Anonymisierung), sodass ein direkter Personenbezug in
+            der Regel ausgeschlossen ist.
+          </p>
+          <p className="mt-2">
+            Die erhobenen Daten werden für einen Zeitraum von 14 Monaten
+            gespeichert und danach automatisch gelöscht.
+          </p>
+          <p className="mt-2">
+            Google Analytics wird ausschließlich nach Ihrer ausdrücklichen
+            Einwilligung geladen (Art. 6 Abs. 1 lit. a DSGVO, § 25 TTDSG).
+            Sie können Ihre Einwilligung jederzeit mit Wirkung für die
+            Zukunft über den Link „Cookie-Einstellungen“ im Footer
+            widerrufen.
           </p>
         </section>
 
